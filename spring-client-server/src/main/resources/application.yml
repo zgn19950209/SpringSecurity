@@ -1,0 +1,38 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    # ????
+    name: spring-client-server
+  security:
+    oauth2:
+      client:
+        registration:
+          # ????????????
+          myClient:
+            client-id: my_client
+            client-secret: 123456
+            #client-name: my_client_name
+            scope: read,write
+            authorization-grant-type: authorization_code
+            provider: myOauth2
+            redirect-uri: '{baseUrl}/{action}/oauth2/code/{registrationId}'
+            # ????
+            client-authentication-method: client_secret_basic
+
+        provider:
+          # ??????
+          myOauth2:
+            #issuer-uri: http://os.com:9000
+            # issuer-uri ?????????
+            # ???????
+            authorization-uri: http://os.com:9000/oauth2/authorize
+            # ??????
+            token-uri: http://os.com:9000/oauth2/token
+            # ??????
+            user-info-uri: http://os.com:9000/oauth2/user
+            # ?????????????
+            user-name-attribute: name
+            user-info-authentication-method: GET
+

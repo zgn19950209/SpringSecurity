@@ -1,0 +1,16 @@
+server:
+  port: 8002
+
+spring:
+  application:
+    # 应用名称
+    name: oauth2-resource-b-8002
+
+# 自定义 jwt 配置（校验jwt）
+jwt:
+  cert-info:
+    # 公钥证书存放位置
+    public-key-location: myjks.cer
+  claims:
+    # 令牌的鉴发方：即授权服务器的地址
+    issuer: http://os.com:9000
